@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+cd /opt/zato
+ZATO_VERSION=`ls | sort -n | tail -1`
+
+if [[ -n ${DEPLOY} ]]; then
+
+  /opt/zato/$ZATO_VERSION/bin/zato from-config /opt/zato/zato_server.config
+
+fi
