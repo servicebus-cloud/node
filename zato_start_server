@@ -10,7 +10,7 @@ if [[ -n ${DEPLOY} ]]; then
     /opt/zato/zato_from_config_create_server
     sed -i 's/gunicorn_workers=2/gunicorn_workers=1/g' /opt/zato/env/server/config/repo/server.conf
     sed -i 's/localhost:17010/0.0.0.0:17010/g' /opt/zato/env/server/config/repo/server.conf
-
+    sed -i 's/use_tls=False/use_tls=True/g' /opt/zato/env/server/config/repo/server.conf
 
     rm -f /opt/zato/env/server/pidfile
     /opt/zato/$ZATO_VERSION/bin/zato start /opt/zato/env/server --fg

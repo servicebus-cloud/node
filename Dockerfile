@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y apt-transport-https \
     software-properties-common \
     curl \
     telnet \
+    nano \
     wget
 
 # Add the package signing key
