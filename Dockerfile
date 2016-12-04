@@ -1,6 +1,6 @@
 # Zato server
 
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER Rafał Krysiak <rafal@zato.io>
 
 RUN ln -s -f /bin/true /usr/bin/chfn
@@ -12,10 +12,11 @@ RUN apt-get update && apt-get install -y apt-transport-https \
     curl \
     telnet \
     nano \
+    sudo \
     wget
 
 # Add the package signing key
-RUN curl -s https://zato.io/repo/zato-0CBD7F72.pgp.asc | sudo apt-key add -
+RUN curl -s https://zato.io/repo/zato-0CBD7F72.pgp.asc | apt-key add -
 
 # Add Zato repo to your apt
 # update sources and install Zato
