@@ -29,7 +29,8 @@ WORKDIR /opt/zato
 EXPOSE 17010
 
 RUN mkdir /opt/zato/ca
-COPY config /opt/zato
+RUN mkdir /opt/zato/config
+COPY config/ /opt/zato/config/
 COPY certs/zato.server1.cert.pem /opt/zato/ca/
 COPY certs/zato.server1.key.pem /opt/zato/ca/
 COPY certs/zato.server1.key.pub.pem /opt/zato/ca/
