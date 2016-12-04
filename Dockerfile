@@ -29,6 +29,7 @@ WORKDIR /opt/zato
 EXPOSE 17010
 
 RUN mkdir /opt/zato/ca
+COPY config /opt/zato
 COPY certs/zato.server1.cert.pem /opt/zato/ca/
 COPY certs/zato.server1.key.pem /opt/zato/ca/
 COPY certs/zato.server1.key.pub.pem /opt/zato/ca/
@@ -45,5 +46,6 @@ RUN chmod 755 /opt/zato/zato_start_server \
 
 USER zato
 RUN rm -rf /opt/zato/env/server && mkdir -p /opt/zato/env/server
+VOLUME /opt/zato/env/server
 
 CMD ["/opt/zato/zato_start_server"]
