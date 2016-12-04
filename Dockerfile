@@ -43,10 +43,9 @@ COPY zato_from_config_create_server /opt/zato/zato_from_config_create_server
 USER root
 RUN chmod 755 /opt/zato/zato_start_server \
               /opt/zato/zato_from_config_create_server
-
-
 USER zato
-RUN rm -rf /opt/zato/env/server && mkdir -p /opt/zato/env/server
+
+RUN if [ -f "/opt/zato/env/server/config/repo/server.conf" ]; then rm -rf /opt/zato/env/server && mkdir -p /opt/zato/env/server; fi
 VOLUME /opt/zato/env/server
 
 CMD ["/opt/zato/zato_start_server"]
